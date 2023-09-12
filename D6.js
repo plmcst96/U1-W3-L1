@@ -204,28 +204,74 @@ const movies = [
 /* ESERCIZIO 9 (forEach)
   Scrivi una funzione per trovare il film più vecchio nell'array fornito.
 */
+const searchTheOldest = function (arr) {
+  let oldest = arr[0]
+  arr.forEach((movie) => {
+    if (parseInt(movie.Year) < parseInt(oldest.Year)) {
+      oldest = movie
+    }
+
+  })
+  return oldest
+}
+console.log(searchTheOldest(movies))
 
 /* ESERCIZIO 10
   Scrivi una funzione per ottenere il numero di film contenuti nell'array fornito.
 */
-
+const findTheMovie = function (arr) {
+  return arr.length
+}
+console.log(findTheMovie(movies))
 
 /* ESERCIZIO 11 (map)
   Scrivi una funzione per creare un array con solamente i titoli dei film contenuti nell'array fornito.
 */
+const titolArrayMovie = function (arr) {
+  const nameMovie = arr.map((movie) => {
+    return movie.Title
+  })
+  console.log(nameMovie)
+}
+titolArrayMovie(movies)
 
 /* ESERCIZIO 12 (filter)
   Scrivi una funzione per ottenere dall'array fornito solamente i film usciti nel millennio corrente.
 */
-
+const millennialMovies = function (arr) {
+  const millennial = arr.filter((movie) => {
+    return parseInt(movie.Year) > 1999
+  })
+  console.log(millennial)
+}
+millennialMovies(movies)
 /* ESERCIZIO 13 (reduce)
   Scrivi una funzione per calcolare la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array fornito.
 */
-
+const totYear = function (arr) {
+  const sumYear = arr.reduce((acc, curr) => {
+    return (acc += parseInt(curr.Year))
+  }, 0)
+  console.log(sumYear)
+}
+totYear(movies)
 /* ESERCIZIO 14 (find)
   Scrivi una funzione per ottenere dall'array fornito uno specifico film (la funzione riceve un imdbID come parametro).
 */
-
+const specificFilm = function (mId) {
+  const film = movies.find((movie) => {
+    return movie.imdbID === mId
+  })
+  console.log(film)
+}
+specificFilm('tt0167260')
 /* ESERCIZIO 15 (findIndex)
   Scrivi una funzione per ottenere dall'array fornito l'indice del primo film uscito nell'anno fornito come parametro.
 */
+const specifyFilm = function (year) {
+  const x = movies.findIndex((movie) => {
+    return movie.Year === year
+  })
+  console.log(x)
+}
+specifyFilm('2015')
